@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="../classes/myAssert.js"></script>
+		<script src="../classes/charity.js"></script>
+		<script src="../classes/global.js"></script>
+		<script src="../classes/paymentService.js"></script>
+		<script src="../classes/user.js"></script>
+		<script src="../classes/userService.js"></script>
+	</head>
+	<body>
+		<p id="displayText"></p>
+	</body>
+	<script>
+		$(document).ready(function() {
+			// Set test preconditions
+			var output = '';
+			var userService = new UserService();
+			var user = userService.getUser(1234);
+			
+			user.confidential = false;
+			
+			var preAmount = user.money;
+			var difference = 30;
+			var expected = preAmount - difference;
+			
+			// Invoke test method
+			user.donate(difference);
+			var actual = user.money;
+			console.log(user.name + ' had $' + preAmount + ', he now has $' + actual + '. Well done ' + user.name + '!');
+			
+			// Run our assert
+			var assert = new MyAssert();
+			assert.equal(actual, expected);
+		});
+	</script>
+</html>
