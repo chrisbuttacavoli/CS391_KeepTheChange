@@ -1,8 +1,5 @@
 /*
-	Constructor needs to be redone.
-	
-	We need a user service that creates and retrieves/inits the user objectject seen below,
-	otherwse we are assuming that we are creating a new user everytime with my code below.
+	Init mocks up fake data, don't worry about the database for now
 */
 
 var User = function() {
